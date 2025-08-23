@@ -1,0 +1,6 @@
+# Prometheus values
+prometheus:
+  prometheusSpec:
+    retention: 10d
+    serviceMonitorSelector: {}
+    podMonitorSelector: {}

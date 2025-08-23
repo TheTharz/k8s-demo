@@ -1,0 +1,32 @@
+repositories:
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
+
+releases:
+  - name: monitoring-stack
+    namespace: monitoring
+    chart: prometheus-community/kube-prometheus-stack
+    version: 57.0.0
+    values:
+      - values/prometheus.yaml
+      - values/grafana.yaml
+    hooks:
+      - events: ['presync']
+        showlogs: true
+        command: 'kubectl'
+        args:
+          [
+            'apply',
+            '--server-side',
+            '-f',
+            'https://github.com/prometheus-operator/prometheus-operator/releases/download/v0.70.0/bundle.yaml',
+          ]
+
+  - name: loki-stack
+    namespace: logging
+    chart: grafana/loki-stack
+    version: 2.9.10
+    values:
+      - values/loki-stack-values.yaml

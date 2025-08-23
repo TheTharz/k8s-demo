@@ -1,0 +1,21 @@
+# Grafana values
+adminUser: admin
+adminPassword: admin123
+
+service:
+  type: NodePort
+  nodePort: 32000
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://monitoring-stack-kube-prometheus-prometheus.monitoring:9090
+        access: proxy
+        isDefault: true
+      - name: Loki
+        type: loki
+        url: http://loki-stack.logging:3100
+        access: proxy
