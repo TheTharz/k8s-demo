@@ -30,13 +30,15 @@ services:
       - mongodb
 
   frontend:
-    image: nginx:alpine
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: notes-frontend
     restart: unless-stopped
+    environment:
+      API_BASE_URL: http://localhost:3001/api
     ports:
       - '3000:80'
-    volumes:
-      - ./frontend:/usr/share/nginx/html:ro
     depends_on:
       - backend
 

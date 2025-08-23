@@ -1,0 +1,30 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: <service-name>         # Name of the service
+#   labels:                      # Optional metadata
+#     app: <app-name>
+# spec:
+#   type: <ServiceType>          # ClusterIP | NodePort | LoadBalancer
+#   selector:                    # Which pods this service routes to (matches labels in deployment)
+#     app: <app-name>
+#   ports:
+#     - protocol: TCP
+#       port: <service-port>     # Port that service exposes
+#       targetPort: <pod-port>   # Port inside container
+#       nodePort: <optional>     # Only if type=NodePort (between 30000-32767)
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001

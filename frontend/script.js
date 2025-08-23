@@ -1,5 +1,6 @@
 // API Configuration
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL =
+  window.APP_CONFIG?.API_BASE_URL || 'http://localhost:3001/api';
 
 // Global state
 let notes = [];
