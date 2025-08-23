@@ -21,4 +21,7 @@ spec:
             - containerPort: 80
           env:
             - name: API_BASE_URL
-              value: 'http://backend:3001/api'
+              valueFrom:
+                secretKeyRef:
+                  name: frontend-secrets
+                  key: API_BASE_URL
