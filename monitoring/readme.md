@@ -91,3 +91,22 @@ kubectl get deployments -n logging
 kubectl get pods -n default
 kubectl get svc -n default
 kubectl get deployments -n default
+
+kubectl get pods -n monitoring
+kubectl get svc -n monitoring
+kubectl get deployments -n monitoring
+
+---------------------later
+
+kubectl delete deployment,svc,pod,cm,secret -n monitoring --all
+kubectl delete namespace monitoring
+
+---- redeploy
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+kubectl create namespace monitoring
+helm install prometheus-stack prometheus-community/kube-prometheus-stack -n monitoring
+kubectl get pods -n monitoring
+kubectl get svc -n monitoring
+kubectl get deployments -n monitoring
+kubectl port-forward svc/prometheus-stack-grafana -n monitoring 3000:80
