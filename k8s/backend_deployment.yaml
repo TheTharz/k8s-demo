@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
         - name: notes-backend-container
-          image: k8s-demo-backend:latest
+          image: thetharz/k8s-demo-backend:latest
           ports:
             - containerPort: 3001
           env:

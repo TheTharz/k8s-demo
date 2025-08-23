@@ -16,6 +16,9 @@ spec:
     spec:
       containers:
         - name: notes-frontend-container
-          image: k8s-demo-frontend:latest
+          image: thetharz/k8s-demo-frontend:latest
           ports:
             - containerPort: 80
+          env:
+            - name: API_BASE_URL
+              value: 'http://backend:3001/api'
