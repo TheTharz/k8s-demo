@@ -8,3 +8,5 @@ delete and restart if there is connection refused
 http://loki:3100
 datasource url but this doenst pass the test however it worked
 {namespace="default"} - sample loki query
+
+kubectl port-forward -n monitoring service/grafana 3000:80 &
