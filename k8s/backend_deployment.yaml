@@ -19,6 +19,13 @@
 #         image: <image-name:tag>
 #         ports:
 #         - containerPort: <port-inside-container>
+#         resources:             # Optional: Resource limits
+#           requests:            # The amount of resources allocated to the container
+#             cpu: <cpu-amount>
+#             memory: <memory-amount>
+#           limits:              # The maximum amount of resources the container is allowed to use
+#             cpu: <cpu-amount>
+#             memory: <memory-amount>
 #         env:                   # Optional: Environment variables (can come from secrets/configmaps)
 #         - name: <ENV_NAME>
 #           value: <value>
@@ -44,6 +51,13 @@ spec:
           image: thetharz/k8s-demo-backend:latest
           ports:
             - containerPort: 3001
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
           env:
             - name: MONGODB_URI
               valueFrom:
