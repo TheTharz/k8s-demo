@@ -65,3 +65,5 @@ while true; do :; done
 watch the cluster pods scaling up by this
 kubectl get hpa -n default -w
 kubectl get pods -n default
+
+can see from the dashboard just use the command minikube dashboard
