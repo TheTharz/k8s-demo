@@ -9,4 +9,3 @@ kubectl apply -f backend_service.yaml
 kubectl apply -f frontend_secrets.yaml
 kubectl apply -f frontend_deployment.yaml
 kubectl apply -f frontend_service.yaml
-
